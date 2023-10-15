@@ -1,0 +1,32 @@
+My solution for leetcode challenge: 1876 "Substrings of Size Three with Distinct Characters"
+
+problem can be found here: https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/
+
+import java.util.*;
+
+class Solution {
+    public int countGoodSubstrings(String s) {
+
+        int validSubstrings = 0;
+        if(s.length() < 3){
+          return validSubstrings;
+        }
+        else {
+          validSubstrings = s.length()-2;
+        }
+
+        String[] subs = new String[s.length()-2];
+
+        for(int x = 0; x < s.length()-2; x++){
+          subs[x] = s.substring(x, x+3);
+        }
+        
+        for(String match : subs){
+          if (match.charAt(0) == match.charAt(1) || match.charAt(0) == match.charAt(2) || match.charAt(1) == match.charAt(2)){
+            validSubstrings--;
+          }
+        }
+      
+      return validSubstrings;
+    } 
+}
